@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuralConnect - Last-Mile Delivery Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --maroon: #8B0000;
+            --gold: #D4AF37;
+            --ivory: #FFFFF0;
+            --light-gold: #F5E8B0;
+            --dark-maroon: #5A0000;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--maroon), var(--dark-maroon));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--gold);
+            color: var(--dark-maroon);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 999;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .language-btn {
+            padding: 10px 15px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn.active {
+            background: var(--maroon);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 0, 0, 0.7), rgba(139, 0, 0, 0.7));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-maroon);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--maroon);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Content Cards */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            padding: 2rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-content {
+            text-align: center;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+        }
+        
+        .card h3 {
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        /* Paithani Section */
+        .paithani-section {
+            background: linear-gradient(to right, var(--ivory) 50%, white 50%);
+        }
+        
+        .paithani-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .paithani-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 8rem;
+            color: var(--gold);
+        }
+        
+        .paithani-content {
+            flex: 1;
+        }
+        
+        /* Donation Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--maroon);
+        }
+        
+        /* Form Styles */
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--maroon);
+            outline: none;
+        }
+        
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-maroon);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .paithani-container {
+                flex-direction: column;
+            }
+            
+            .paithani-section {
+                background: var(--ivory);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .language-switcher {
+                top: 180px;
+                right: 10px;
+            }
+            
+            .language-btn {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            nav a {
+                display: block;
+                text-align: center;
+                padding: 0.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-truck"></i>
+                <h1 data-translate="site_title">RuralConnect</h1>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-translate="nav_home">Home</a></li>
+                    <li><a href="#challenges" class="nav-link" data-translate="nav_challenges">Delivery Challenges</a></li>
+                    <li><a href="#schemes" class="nav-link" data-translate="nav_schemes">Government Schemes</a></li>
+                    <li><a href="#survey" class="nav-link" data-translate="nav_survey">Survey Insights</a></li>
+                    <li><a href="#solutions" class="nav-link" data-translate="nav_solutions">Tech Solutions</a></li>
+                    <li><a href="#paithani" class="nav-link" data-translate="nav_paithani">Paithani Saree</a></li>
+                    <li><a href="#support" class="nav-link" data-translate="nav_support">Get Support</a></li>
+                    <li><a href="#connect" class="nav-link" data-translate="nav_connect">Connect With Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="language-btn active" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">हिंदी</button>
+        <button class="language-btn" data-lang="mr">मराठी</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2 data-translate="hero_title">Empowering Rural Entrepreneurs in Maharashtra</h2>
+            <p data-translate="hero_subtitle">Bridging the last-mile delivery gap for artisans and small businesses through innovative solutions and community partnerships.</p>
+            <a href="#connect" class="btn" data-translate="hero_button">Join Our Initiative</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Tab Content -->
+        <section id="home-tab" class="tab-content active">
+            <div class="section-title">
+                <h2 data-translate="mission_title">Our Mission</h2>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 data-translate="card1_title">Supporting Artisans</h3>
+                        <p data-translate="card1_text">We connect Paithani saree weavers and other rural artisans with markets across India and beyond, ensuring fair prices and timely delivery.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 data-translate="card2_title">Last-Mile Solutions</h3>
+                        <p data-translate="card2_text">Our innovative delivery models overcome infrastructure challenges in remote areas of Maharashtra, reaching even the most isolated villages.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 data-translate="card3_title">Digital Empowerment</h3>
+                        <p data-translate="card3_text">We provide user-friendly digital tools and training to help rural entrepreneurs manage orders, track shipments, and grow their businesses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Challenges Tab Content -->
+        <section id="challenges-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="challenges_title">Delivery Challenges</h2>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3 data-translate="challenge1_title">Poor Road Infrastructure</h3>
+                        <p data-translate="challenge1_text">Many rural areas in Maharashtra lack proper roads, making vehicle access difficult especially during monsoon season.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 data-translate="challenge2_title">Limited Digital Connectivity</h3>
+                        <p data-translate="challenge2_text">Internet access is unreliable in remote villages, hindering online order management and tracking.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3 data-translate="challenge3_title">High Delivery Costs</h3>
+                        <p data-translate="challenge3_text">Low order volumes and long distances make delivery economically challenging for small businesses.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3 data-translate="challenge4_title">Packaging & Handling</h3>
+                        <p data-translate="challenge4_text">Delicate products like Paithani sarees require special packaging and careful handling during transit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Government Schemes Tab Content -->
+        <section id="schemes-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="schemes_title">Government Schemes</h2>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3 data-translate="scheme1_title">PMGSY (Pradhan Mantri Gram Sadak Yojana)</h3>
+                        <p data-translate="scheme1_text">Rural road connectivity program that aims to provide all-weather road access to rural habitats.</p>
+                        <a href="https://pmgsy.nic.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 data-translate="scheme2_title">MSME (Micro, Small & Medium Enterprises)</h3>
+                        <p data-translate="scheme2_text">Schemes offering credit support, technology upgradation, marketing assistance, and infrastructure development.</p>
+                        <a href="https://msme.gov.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 data-translate="scheme3_title">Startup India</h3>
+                        <p data-translate="scheme3_text">Initiatives to promote entrepreneurship through simplified regulations, funding support, and industry-academia partnerships.</p>
+                        <a href="https://www.startupindia.gov.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 data-translate="scheme4_title">MUDRA Yojana</h3>
+                        <p data-translate="scheme4_text">Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.</p>
+                        <a href="https://www.mudra.org.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h3 data-translate="scheme5_title">Mahila Udyam Nidhi</h3>
+                        <p data-translate="scheme5_text">Special scheme for women entrepreneurs offering financial assistance and support.</p>
+                        <a href="https://www.sidbi.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 data-translate="scheme6_title">SFURTI (Scheme of Fund for Regeneration of Traditional Industries)</h3>
+                        <p data-translate="scheme6_text">Supports traditional industries and artisans through cluster development approach.</p>
+                        <a href="https://sfurti.msme.gov.in/" target="_blank" class="btn" style="margin-top: 15px; padding: 8px 20px;" data-translate="learn_more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survey Insights Tab Content -->
+        <section id="survey-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="survey_title">Survey Insights</h2>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 data-translate="survey1_title">Artisan Challenges</h3>
+                        <p data-translate="survey1_text">85% of Paithani weavers reported difficulty accessing markets outside their immediate region.</p>
+                        <div style="background: #f0f0f0; height: 20px; border-radius: 10px; margin-top: 15px;">
+                            <div style="background: var(--maroon); height: 100%; width: 85%; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 data-translate="survey2_title">Delivery Time</h3>
+                        <p data-translate="survey2_text">Average delivery time to metropolitan areas is 7-10 days, compared to 2-3 days for urban businesses.</p>
+                        <div style="background: #f0f0f0; height: 20px; border-radius: 10px; margin-top: 15px;">
+                            <div style="background: var(--gold); height: 100%; width: 70%; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3 data-translate="survey3_title">Digital Literacy</h3>
+                        <p data-translate="survey3_text">Only 35% of rural entrepreneurs feel confident using digital platforms for business operations.</p>
+                        <div style="background: #f0f0f0; height: 20px; border-radius: 10px; margin-top: 15px;">
+                            <div style="background: var(--dark-maroon); height: 100%; width: 35%; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Solutions Tab Content -->
+        <section id="solutions-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="solutions_title">Tech-Based Solutions</h2>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 data-translate="solution1_title">Mobile-First Platform</h3>
+                        <p data-translate="solution1_text">Simple, vernacular app for order management, payment processing, and delivery tracking designed for low digital literacy users.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 data-translate="solution2_title">Smart Route Optimization</h3>
+                        <p data-translate="solution2_text">AI-powered logistics platform that plans efficient delivery routes considering road conditions and seasonal variations.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 data-translate="solution3_title">Community Delivery Hubs</h3>
+                        <p data-translate="solution3_text">Establishing collection points in central villages where multiple orders can be consolidated for cost-effective delivery.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3 data-translate="solution4_title">Hybrid Delivery Models</h3>
+                        <p data-translate="solution4_text">Combining traditional transport with local motorcycle delivery for the final mile to remote locations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paithani Saree Tab Content -->
+        <section id="paithani-tab" class="tab-content paithani-section">
+            <div class="section-title">
+                <h2 data-translate="paithani_title">Paithani Saree Heritage</h2>
+            </div>
+            
+            <div class="paithani-container">
+                <div class="paithani-icon">
+                    <i class="fas fa-vest"></i>
+                </div>
+                
+                <div class="paithani-content">
+                    <h3 style="color: var(--maroon); margin-bottom: 1rem;" data-translate="paithani_subtitle">The Art of Paithani Weaving</h3>
+                    <p data-translate="paithani_text1">Paithani sarees are a traditional form of silk saree originating from Paithan in Maharashtra. Known for their intricate zari work and vibrant colors, each saree takes 2-6 months to complete depending on the complexity of design.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 0.5rem; color: var(--dark-maroon);" data-translate="paithani_stories">Artisan Stories</h4>
+                    <p data-translate="paithani_text2">Meet the master weavers who have preserved this ancient craft through generations, now facing challenges in reaching global markets.</p>
+                    
+                    <h4 style="margin: 1.5rem 0 0.5rem; color: var(--dark-maroon);" data-translate="paithani_delivery">Delivery Support</h4>
+                    <p data-translate="paithani_text3">We provide specialized packaging and insured delivery for these precious handwoven treasures, ensuring they reach customers in perfect condition.</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <button class="btn" onclick="openDonationModal()" data-translate="paithani_button">Support Artisans</button>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);" data-translate="donation_help">Your donation helps preserve this traditional art form and supports artisan livelihoods</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Support Tab Content -->
+        <section id="support-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="support_title">Get Support</h2>
+            </div>
+            
+            <div class="form-container">
+                <h3 style="color: var(--maroon); margin-bottom: 1.5rem; text-align: center;" data-translate="support_subtitle">Student Volunteer Helpdesk</h3>
+                <p style="text-align: center; margin-bottom: 2rem;" data-translate="support_text">Our team of student volunteers is ready to assist you with digital onboarding, order management, and delivery coordination.</p>
+                
+                <form id="support-form">
+                    <div id="support-message"></div>
+                    <div class="form-group">
+                        <label for="name" data-translate="form_name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact" data-translate="form_phone">Phone Number</label>
+                        <input type="tel" id="contact" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issue" data-translate="form_help">How can we help you?</label>
+                        <select id="issue" class="form-control" required>
+                            <option value="" data-translate="form_select">Select an option</option>
+                            <option value="digital-onboarding" data-translate="option_digital">Digital Platform Onboarding</option>
+                            <option value="order-management" data-translate="option_order">Order Management Assistance</option>
+                            <option value="delivery-issues" data-translate="option_delivery">Delivery Related Issues</option>
+                            <option value="payment-help" data-translate="option_payment">Payment Processing Help</option>
+                            <option value="other" data-translate="option_other">Other Support</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" data-translate="form_details">Details (Optional)</label>
+                        <textarea id="message" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;" data-translate="form_request">Request Assistance</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Connect With Us Tab Content -->
+        <section id="connect-tab" class="tab-content">
+            <div class="section-title">
+                <h2 data-translate="connect_title">Connect With Us</h2>
+            </div>
+            
+            <div class="form-container">
+                <h3 style="color: var(--maroon); margin-bottom: 1.5rem; text-align: center;" data-translate="connect_subtitle">Join Our Initiative</h3>
+                <p style="text-align: center; margin-bottom: 2rem;" data-translate="connect_text">Fill out this form to become part of our rural entrepreneurship network and access last-mile delivery solutions.</p>
+                
+                <form id="connect-form">
+                    <div id="connect-message"></div>
+                    <div class="form-group">
+                        <label for="connect-name" data-translate="form_name">Full Name</label>
+                        <input type="text" id="connect-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="connect-phone" data-translate="form_phone">Phone Number</label>
+                        <input type="tel" id="connect-phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="connect-email" data-translate="form_email">Email Address</label>
+                        <input type="email" id="connect-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business-type" data-translate="form_business">Business Type</label>
+                        <select id="business-type" class="form-control" required>
+                            <option value="" data-translate="form_select">Select your business</option>
+                            <option value="paithani" data-translate="option_paithani">Paithani Saree Weaving</option>
+                            <option value="handicrafts" data-translate="option_handicrafts">Other Handicrafts</option>
+                            <option value="agriculture" data-translate="option_agriculture">Agricultural Products</option>
+                            <option value="textiles" data-translate="option_textiles">Textiles</option>
+                            <option value="other" data-translate="option_other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="income" data-translate="form_income">Annual Business Income (INR)</label>
+                        <select id="income" class="form-control" required>
+                            <option value="" data-translate="form_select">Select income range</option>
+                            <option value="0-1L" data-translate="option_income1">Up to 1 Lakh</option>
+                            <option value="1-5L" data-translate="option_income2">1-5 Lakhs</option>
+                            <option value="5-10L" data-translate="option_income3">5-10 Lakhs</option>
+                            <option value="10L+" data-translate="option_income4">Above 10 Lakhs</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="delivery-method" data-translate="form_delivery">Preferred Delivery Method</label>
+                        <select id="delivery-method" class="form-control" required>
+                            <option value="" data-translate="form_select">Select preferred method</option>
+                            <option value="pickup-point" data-translate="option_pickup">Community Pickup Point</option>
+                            <option value="home-delivery" data-translate="option_home">Direct Home Delivery</option>
+                            <option value="mixed" data-translate="option_mixed">Mixed (Based on Location)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;" data-translate="form_submit">Submit Application</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Donation Modal -->
+    <div id="donation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDonationModal()">&times;</span>
+            <h2 style="color: var(--maroon); margin-bottom: 1.5rem; text-align: center;" data-translate="donation_title">Support Paithani Artisans</h2>
+            <p style="text-align: center; margin-bottom: 2rem;" data-translate="donation_text">Your donation helps preserve this traditional art form and supports artisan livelihoods. 100% of donations go directly to the artisans.</p>
+            
+            <form id="donation-form">
+                <div id="donation-message"></div>
+                
+                <div class="form-group">
+                    <label for="donor-name" data-translate="donor_name">Full Name</label>
+                    <input type="text" id="donor-name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donor-email" data-translate="donor_email">Email Address</label>
+                    <input type="email" id="donor-email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donor-phone" data-translate="donor_phone">Phone Number</label>
+                    <input type="tel" id="donor-phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donation-amount" data-translate="donation_amount">Donation Amount (INR)</label>
+                    <select id="donation-amount" class="form-control" required>
+                        <option value="" data-translate="form_select">Select Amount</option>
+                        <option value="500" data-translate="amount_500">₹500 - Supports one artisan for a week</option>
+                        <option value="1000" data-translate="amount_1000">₹1,000 - Supports raw materials for one saree</option>
+                        <option value="2500" data-translate="amount_2500">₹2,500 - Supports one artisan for a month</option>
+                        <option value="5000" data-translate="amount_5000">₹5,000 - Supports workshop equipment</option>
+                        <option value="10000" data-translate="amount_10000">₹10,000 - Supports family of artisans</option>
+                        <option value="custom" data-translate="custom_amount">Custom Amount</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="custom-amount-group" style="display: none;">
+                    <label for="custom-amount" data-translate="enter_amount">Enter Custom Amount (INR)</label>
+                    <input type="number" id="custom-amount" class="form-control" min="100" placeholder="Enter amount in INR">
+                </div>
+                
+                <div class="form-group">
+                    <label for="donation-message-text" data-translate="donation_message">Message to Artisans (Optional)</label>
+                    <textarea id="donation-message-text" class="form-control" rows="3" placeholder="Your encouraging message for the artisans..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="newsletter" checked>
+                        <span data-translate="newsletter_text">Receive updates about how your donation is helping artisans</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; background: var(--maroon); color: white;" data-translate="donate_button">Make a Donation</button>
+                
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-light);">
+                    <i class="fas fa-lock"></i> <span data-translate="secure_text">Your donation is secure and 100% goes to artisans</span>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 data-translate="footer_title">RuralConnect</h3>
+                    <p data-translate="footer_text">Empowering rural entrepreneurs in Maharashtra through innovative last-mile delivery solutions.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 data-translate="footer_links">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" data-translate="nav_home">Home</a></li>
+                        <li><a href="#challenges" data-translate="nav_challenges">Delivery Challenges</a></li>
+                        <li><a href="#paithani" data-translate="nav_paithani">Paithani Saree</a></li>
+                        <li><a href="#support" data-translate="nav_support">Get Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 data-translate="footer_contact">Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> dubeyjiya2005@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 XXXXX XXXXX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-translate="footer_location">Maharashtra, India</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p data-translate="footer_copyright">&copy; 2023 RuralConnect. All rights reserved. | A Student-Led Initiative</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Translation data
+        const translations = {
+            en: {
+                // Navigation
+                "site_title": "RuralConnect",
+                "nav_home": "Home",
+                "nav_challenges": "Delivery Challenges",
+                "nav_schemes": "Government Schemes",
+                "nav_survey": "Survey Insights",
+                "nav_solutions": "Tech Solutions",
+                "nav_paithani": "Paithani Saree",
+                "nav_support": "Get Support",
+                "nav_connect": "Connect With Us",
+                
+                // Hero Section
+                "hero_title": "Empowering Rural Entrepreneurs in Maharashtra",
+                "hero_subtitle": "Bridging the last-mile delivery gap for artisans and small businesses through innovative solutions and community partnerships.",
+                "hero_button": "Join Our Initiative",
+                
+                // Home Tab
+                "mission_title": "Our Mission",
+                "card1_title": "Supporting Artisans",
+                "card1_text": "We connect Paithani saree weavers and other rural artisans with markets across India and beyond, ensuring fair prices and timely delivery.",
+                "card2_title": "Last-Mile Solutions",
+                "card2_text": "Our innovative delivery models overcome infrastructure challenges in remote areas of Maharashtra, reaching even the most isolated villages.",
+                "card3_title": "Digital Empowerment",
+                "card3_text": "We provide user-friendly digital tools and training to help rural entrepreneurs manage orders, track shipments, and grow their businesses.",
+                
+                // Challenges Tab
+                "challenges_title": "Delivery Challenges",
+                "challenge1_title": "Poor Road Infrastructure",
+                "challenge1_text": "Many rural areas in Maharashtra lack proper roads, making vehicle access difficult especially during monsoon season.",
+                "challenge2_title": "Limited Digital Connectivity",
+                "challenge2_text": "Internet access is unreliable in remote villages, hindering online order management and tracking.",
+                "challenge3_title": "High Delivery Costs",
+                "challenge3_text": "Low order volumes and long distances make delivery economically challenging for small businesses.",
+                "challenge4_title": "Packaging & Handling",
+                "challenge4_text": "Delicate products like Paithani sarees require special packaging and careful handling during transit.",
+                
+                // Schemes Tab
+                "schemes_title": "Government Schemes",
+                "scheme1_title": "PMGSY (Pradhan Mantri Gram Sadak Yojana)",
+                "scheme1_text": "Rural road connectivity program that aims to provide all-weather road access to rural habitats.",
+                "scheme2_title": "MSME (Micro, Small & Medium Enterprises)",
+                "scheme2_text": "Schemes offering credit support, technology upgradation, marketing assistance, and infrastructure development.",
+                "scheme3_title": "Startup India",
+                "scheme3_text": "Initiatives to promote entrepreneurship through simplified regulations, funding support, and industry-academia partnerships.",
+                "scheme4_title": "MUDRA Yojana",
+                "scheme4_text": "Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.",
+                "scheme5_title": "Mahila Udyam Nidhi",
+                "scheme5_text": "Special scheme for women entrepreneurs offering financial assistance and support.",
+                "scheme6_title": "SFURTI (Scheme of Fund for Regeneration of Traditional Industries)",
+                "scheme6_text": "Supports traditional industries and artisans through cluster development approach.",
+                "learn_more": "Learn More",
+                
+                // Survey Tab
+                "survey_title": "Survey Insights",
+                "survey1_title": "Artisan Challenges",
+                "survey1_text": "85% of Paithani weavers reported difficulty accessing markets outside their immediate region.",
+                "survey2_title": "Delivery Time",
+                "survey2_text": "Average delivery time to metropolitan areas is 7-10 days, compared to 2-3 days for urban businesses.",
+                "survey3_title": "Digital Literacy",
+                "survey3_text": "Only 35% of rural entrepreneurs feel confident using digital platforms for business operations.",
+                
+                // Solutions Tab
+                "solutions_title": "Tech-Based Solutions",
+                "solution1_title": "Mobile-First Platform",
+                "solution1_text": "Simple, vernacular app for order management, payment processing, and delivery tracking designed for low digital literacy users.",
+                "solution2_title": "Smart Route Optimization",
+                "solution2_text": "AI-powered logistics platform that plans efficient delivery routes considering road conditions and seasonal variations.",
+                "solution3_title": "Community Delivery Hubs",
+                "solution3_text": "Establishing collection points in central villages where multiple orders can be consolidated for cost-effective delivery.",
+                "solution4_title": "Hybrid Delivery Models",
+                "solution4_text": "Combining traditional transport with local motorcycle delivery for the final mile to remote locations.",
+                
+                // Paithani Tab
+                "paithani_title": "Paithani Saree Heritage",
+                "paithani_subtitle": "The Art of Paithani Weaving",
+                "paithani_text1": "Paithani sarees are a traditional form of silk saree originating from Paithan in Maharashtra. Known for their intricate zari work and vibrant colors, each saree takes 2-6 months to complete depending on the complexity of design.",
+                "paithani_stories": "Artisan Stories",
+                "paithani_text2": "Meet the master weavers who have preserved this ancient craft through generations, now facing challenges in reaching global markets.",
+                "paithani_delivery": "Delivery Support",
+                "paithani_text3": "We provide specialized packaging and insured delivery for these precious handwoven treasures, ensuring they reach customers in perfect condition.",
+                "paithani_button": "Support Artisans",
+                "donation_help": "Your donation helps preserve this traditional art form and supports artisan livelihoods",
+                
+                // Support Tab
+                "support_title": "Get Support",
+                "support_subtitle": "Student Volunteer Helpdesk",
+                "support_text": "Our team of student volunteers is ready to assist you with digital onboarding, order management, and delivery coordination.",
+                "form_name": "Your Name",
+                "form_phone": "Phone Number",
+                "form_help": "How can we help you?",
+                "form_select": "Select an option",
+                "option_digital": "Digital Platform Onboarding",
+                "option_order": "Order Management Assistance",
+                "option_delivery": "Delivery Related Issues",
+                "option_payment": "Payment Processing Help",
+                "option_other": "Other Support",
+                "form_details": "Details (Optional)",
+                "form_request": "Request Assistance",
+                
+                // Connect Tab
+                "connect_title": "Connect With Us",
+                "connect_subtitle": "Join Our Initiative",
+                "connect_text": "Fill out this form to become part of our rural entrepreneurship network and access last-mile delivery solutions.",
+                "form_email": "Email Address",
+                "form_business": "Business Type",
+                "option_paithani": "Paithani Saree Weaving",
+                "option_handicrafts": "Other Handicrafts",
+                "option_agriculture": "Agricultural Products",
+                "option_textiles": "Textiles",
+                "form_income": "Annual Business Income (INR)",
+                "option_income1": "Up to 1 Lakh",
+                "option_income2": "1-5 Lakhs",
+                "option_income3": "5-10 Lakhs",
+                "option_income4": "Above 10 Lakhs",
+                "form_delivery": "Preferred Delivery Method",
+                "option_pickup": "Community Pickup Point",
+                "option_home": "Direct Home Delivery",
+                "option_mixed": "Mixed (Based on Location)",
+                "form_submit": "Submit Application",
+                
+                // Footer
+                "footer_title": "RuralConnect",
+                "footer_text": "Empowering rural entrepreneurs in Maharashtra through innovative last-mile delivery solutions.",
+                "footer_links": "Quick Links",
+                "footer_contact": "Contact Us",
+                "footer_location": "Maharashtra, India",
+                "footer_copyright": "© 2023 RuralConnect. All rights reserved. | A Student-Led Initiative",
+
+                // Donation Modal
+                "donation_title": "Support Paithani Artisans",
+                "donation_text": "Your donation helps preserve this traditional art form and supports artisan livelihoods. 100% of donations go directly to the artisans.",
+                "donor_name": "Full Name",
+                "donor_email": "Email Address",
+                "donor_phone": "Phone Number",
+                "donation_amount": "Donation Amount (INR)",
+                "amount_500": "₹500 - Supports one artisan for a week",
+                "amount_1000": "₹1,000 - Supports raw materials for one saree",
+                "amount_2500": "₹2,500 - Supports one artisan for a month",
+                "amount_5000": "₹5,000 - Supports workshop equipment",
+                "amount_10000": "₹10,000 - Supports family of artisans",
+                "custom_amount": "Custom Amount",
+                "enter_amount": "Enter Custom Amount (INR)",
+                "donation_message": "Message to Artisans (Optional)",
+                "newsletter_text": "Receive updates about how your donation is helping artisans",
+                "donate_button": "Make a Donation",
+                "secure_text": "Your donation is secure and 100% goes to artisans"
+            },
+            hi: {
+                // Navigation
+                "site_title": "रूरलकनेक्ट",
+                "nav_home": "होम",
+                "nav_challenges": "डिलीवरी चुनौतियाँ",
+                "nav_schemes": "सरकारी योजनाएं",
+                "nav_survey": "सर्वेक्षण अंतर्दृष्टि",
+                "nav_solutions": "तकनीकी समाधान",
+                "nav_paithani": "पैठणी साड़ी",
+                "nav_support": "सहायता प्राप्त करें",
+                "nav_connect": "हमसे जुड़ें",
+                
+                // Hero Section
+                "hero_title": "महाराष्ट्र में ग्रामीण उद्यमियों को सशक्त बनाना",
+                "hero_subtitle": "अभिनव समाधानों और सामुदायिक भागीदारी के माध्यम से कारीगरों और छोटे व्यवसायों के लिए लास्ट-माइल डिलीवरी अंतर को पाटना।",
+                "hero_button": "हमारी पहल में शामिल हों",
+                
+                // Home Tab
+                "mission_title": "हमारा मिशन",
+                "card1_title": "कारीगरों का समर्थन",
+                "card1_text": "हम पैठणी साड़ी बुनकरों और अन्य ग्रामीण कारीगरों को पूरे भारत और उसके बाहर बाजारों से जोड़ते हैं, उचित मूल्य और समय पर डिलीवरी सुनिश्चित करते हैं।",
+                "card2_title": "लास्ट-माइल समाधान",
+                "card2_text": "हमारे अभिनव डिलीवरी मॉडल महाराष्ट्र के दूरदराज के इलाकों में बुनियादी ढांचे की चुनौतियों को दूर करते हैं, यहां तक कि सबसे अलग-थलग गांवों तक पहुंचते हैं।",
+                "card3_title": "डिजिटल सशक्तिकरण",
+                "card3_text": "हम ग्रामीण उद्यमियों को ऑर्डर प्रबंधित करने, शिपमेंट ट्रैक करने और अपने व्यवसायों को बढ़ाने में मदत करने के लिए उपयोगकर्ता के अनुकूल डिजिटल टूल और प्रशिक्षण प्रदान करते हैं।",
+                
+                // Challenges Tab
+                "challenges_title": "डिलीवरी चुनौतियाँ",
+                "challenge1_title": "खराब सड़क बुनियादी ढांचा",
+                "challenge1_text": "महाराष्ट्र के कई ग्रामीण इलाकों में उचित सड़कों का अभाव है, जिससे वाहनों की पहुंच विशेष रूप से मानसून के मौसम में मुश्किल हो जाती है।",
+                "challenge2_title": "सीमित डिजिटल कनेक्टिविटी",
+                "challenge2_text": "दूरदराज के गांवों में इंटरनेट की पहुंच अविश्वसनीय है, जिससे ऑनलाइन ऑर्डर प्रबंधन और ट्रैकिंग बाधित होती है।",
+                "challenge3_title": "उच्च डिलीवरी लागत",
+                "challenge3_text": "कम ऑर्डर मात्रा और लंबी दूरी छोटे व्यवसायों के लिए आर्थिक रूप से चुनौतीपूर्ण डिलीवरी बनाती है।",
+                "challenge4_title": "पैकेजिंग और हैंडलिंग",
+                "challenge4_text": "पैठणी साड़ियों जैसे नाजुक उत्पादों को ट्रांजिट के दौरान विशेष पैकेजिंग और सावधानीपूर्वक हैंडलिंग की आवश्यकता होती है।",
+                
+                // Schemes Tab
+                "schemes_title": "सरकारी योजनाएं",
+                "scheme1_title": "पीएमजीएसवाई (प्रधानमंत्री ग्राम सड़क योजना)",
+                "scheme1_text": "ग्रामीण सड़क कनेक्टिविटी कार्यक्रम जिसका उद्देश्य ग्रामीण आवासों को सभी मौसमों में सड़क पहुंच प्रदान करना है।",
+                "scheme2_title": "एमएसएमई (सूक्ष्म, लघु और मध्यम उद्यम)",
+                "scheme2_text": "क्रेडिट सपोर्ट, टेक्नोलॉजी अपग्रेडेशन, मार्केटिंग सहायता और इन्फ्रास्ट्रक्चर डेवलपमेंट की पेशकश करने वाली योजनाएं।",
+                "scheme3_title": "स्टार्टअप इंडिया",
+                "scheme3_text": "सरलीकृत नियमों, फंडिंग सपोर्ट और उद्योग-अकादमिया भागीदारी के माध्यम से उद्यमशीलता को बढ़ावा देने के लिए पहल।",
+                "scheme4_title": "मुद्रा योजना",
+                "scheme4_text": "गैर-कॉर्पोरेट, गैर-कृषि लघु/सूक्ष्म उद्यमों को ₹10 लाख तक का ऋण प्रदान करती है।",
+                "scheme5_title": "महिला उद्यम निधि",
+                "scheme5_text": "महिला उद्यमियों के लिए विशेष योजना जो वित्तीय सहायता और समर्थन प्रदान करती है।",
+                "scheme6_title": "एसएफयूआरटीआई (पारंपरिक उद्योगों के पुनरुद्धार के लिए निधि योजना)",
+                "scheme6_text": "क्लस्टर विकास दृष्टिकोण के माध्यम से पारंपरिक उद्योगों और कारीगरों का समर्थन करती है।",
+                "learn_more": "और जानें",
+                
+                // Survey Tab
+                "survey_title": "सर्वेक्षण अंतर्दृष्टि",
+                "survey1_title": "कारीगर चुनौतियाँ",
+                "survey1_text": "85% पैठणी बुनकरों ने अपने तत्काल क्षेत्र के बाहर बाजारों तक पहुंचने में कठिनाई की सूचना दी।",
+                "survey2_title": "डिलीवरी समय",
+                "survey2_text": "महानगरीय क्षेत्रों में औसत डिलीवरी समय 7-10 दिन है, जबकि शहरी व्यवसायों के लिए 2-3 दिन है।",
+                "survey3_title": "डिजिटल साक्षरता",
+                "survey3_text": "केवल 35% ग्रामीण उद्यमी व्यवसाय संचालन के लिए डिजिटल प्लेटफॉर्म का उपयोग करने में आत्मविश्वास महसूस करते हैं।",
+                
+                // Solutions Tab
+                "solutions_title": "तकनीक-आधारित समाधान",
+                "solution1_title": "मोबाइल-फर्स्ट प्लेटफॉर्म",
+                "solution1_text": "कम डिजिटल साक्षरता वाले उपयोगकर्ताओं के लिए डिज़ाइन किया गया ऑर्डर प्रबंधन, भुगतान प्रसंस्करण और डिलीवरी ट्रैकिंग के लिए सरल, देशी ऐप।",
+                "solution2_title": "स्मार्ट रूट ऑप्टिमाइजेशन",
+                "solution2_text": "एआई-पावर्ड लॉजिस्टिक्स प्लेटफॉर्म जो सड़क की स्थिति और मौसमी बदलावों को ध्यान में रखते हुए कुशल डिलीवरी मार्गों की योजना बनाता है।",
+                "solution3_title": "सामुदायिक डिलीवरी हब",
+                "solution3_text": "केंद्रीय गांवों में संग्रह बिंदु स्थापित करना जहां किफायती डिलीवरी के लिए कई ऑर्डर समेकित किए जा सकते हैं।",
+                "solution4_title": "हाइब्रिड डिलीवरी मॉडल",
+                "solution4_text": "दूरदराज के स्थानों पर अंतिम मील के लिए पारंपरिक परिवहन के साथ स्थानीय मोटरसाइकिल डिलीवरी को जोड़ना।",
+                
+                // Paithani Tab
+                "paithani_title": "पैठणी साड़ी विरासत",
+                "paithani_subtitle": "पैठणी बुनाई की कला",
+                "paithani_text1": "पैठणी साड़ियां महाराष्ट्र के पैठण से उत्पन्न रेशमी साड़ियों का एक पारंपरिक रूप है। अपनी जटिल जरी कार्य और जीवंत रंगों के लिए जानी जाने वाली, प्रत्येक साड़ी को डिजाइन की जटिलता के आधार पर पूरा होने में 2-6 महीने लगते हैं।",
+                "paithani_stories": "कारीगर कहानियाँ",
+                "paithani_text2": "मास्टर बुनकरों से मिलें जिन्होंने पीढ़ियों से इस प्राचीन शिल्प को संरक्षित किया है, अब वैश्विक बाजारों तक पहुंचने की चुनौतियों का सामना कर रहे हैं।",
+                "paithani_delivery": "डिलीवरी सहायता",
+                "paithani_text3": "हम इन बहुमूल्य हस्तनिर्मित खजानों के लिए विशेष पैकेजिंग और बीमाकृत डिलीवरी प्रदान करते हैं, यह सुनिश्चित करते हुए कि वे ग्राहकों को बिल्कुल सही स्थिति में पहुंचें।",
+                "paithani_button": "कारीगरों का समर्थन करें",
+                "donation_help": "आपका दान इस पारंपरिक कला रूप को संरक्षित करने में मदद करता है और कारीगरों की आजीविका का समर्थन करता है",
+                
+                // Support Tab
+                "support_title": "सहायता प्राप्त करें",
+                "support_subtitle": "छात्र स्वयंसेवक हेल्पडेस्क",
+                "support_text": "छात्र स्वयंसेवकों की हमारी टीम डिजिटल ऑनबोर्डिंग, ऑर्डर प्रबंधन और डिलीवरी समन्वय में आपकी सहायता के लिए तैयार है।",
+                "form_name": "आपका नाम",
+                "form_phone": "फोन नंबर",
+                "form_help": "हम आपकी कैसे मदद कर सकते हैं?",
+                "form_select": "एक विकल्प चुनें",
+                "option_digital": "डिजिटल प्लेटफॉर्म ऑनबोर्डिंग",
+                "option_order": "ऑर्डर प्रबंधन सहायता",
+                "option_delivery": "डिलीवरी संबंधी मुद्दे",
+                "option_payment": "भुगतान प्रसंस्करण सहायता",
+                "option_other": "अन्य सहायता",
+                "form_details": "विवरण (वैकल्पिक)",
+                "form_request": "सहायता का अनुरोध करें",
+                
+                // Connect Tab
+                "connect_title": "हमसे जुड़ें",
+                "connect_subtitle": "हमारी पहल में शामिल हों",
+                "connect_text": "हमारे ग्रामीण उद्यमिता नेटवर्क का हिस्सा बनने और लास्ट-माइल डिलीवरी समाधानों तक पहुंचने के लिए इस फॉर्म को भरें।",
+                "form_email": "ईमेल पता",
+                "form_business": "व्यवसाय का प्रकार",
+                "option_paithani": "पैठणी साड़ी बुनाई",
+                "option_handicrafts": "अन्य हस्तशिल्प",
+                "option_agriculture": "कृषि उत्पाद",
+                "option_textiles": "टेक्सटाइल",
+                "form_income": "वार्षिक व्यवसाय आय (INR)",
+                "option_income1": "1 लाख तक",
+                "option_income2": "1-5 लाख",
+                "option_income3": "5-10 लाख",
+                "option_income4": "10 लाख से ऊपर",
+                "form_delivery": "पसंदीदा डिलीवरी विधि",
+                "option_pickup": "सामुदायिक पिकअप पॉइंट",
+                "option_home": "सीधी होम डिलीवरी",
+                "option_mixed": "मिश्रित (स्थान के आधार पर)",
+                "form_submit": "आवेदन जमा करें",
+                
+                // Footer
+                "footer_title": "रूरलकनेक्ट",
+                "footer_text": "अभिनव लास्ट-माइल डिलीवरी समाधानों के माध्यम से महाराष्ट्र में ग्रामीण उद्यमियों को सशक्त बनाना।",
+                "footer_links": "त्वरित लिंक",
+                "footer_contact": "हमसे संपर्क करें",
+                "footer_location": "महाराष्ट्र, भारत",
+                "footer_copyright": "© 2023 रूरलकनेक्ट। सर्वाधिकार सुरक्षित। | एक छात्र-नेतृत्व वाली पहल",
+
+                // Donation Modal
+                "donation_title": "पैठणी कारीगरों का समर्थन करें",
+                "donation_text": "आपका दान इस पारंपरिक कला रूप को संरक्षित करने में मदद करता है और कारीगरों की आजीविका का समर्थन करता है। 100% दान सीधे कारीगरों को जाता है।",
+                "donor_name": "पूरा नाम",
+                "donor_email": "ईमेल पता",
+                "donor_phone": "फोन नंबर",
+                "donation_amount": "दान राशि (INR)",
+                "amount_500": "₹500 - एक कारीगर को एक सप्ताह के लिए समर्थन",
+                "amount_1000": "₹1,000 - एक साड़ी के लिए कच्चा माल समर्थन",
+                "amount_2500": "₹2,500 - एक कारीगर को एक महीने के लिए समर्थन",
+                "amount_5000": "₹5,000 - कार्यशाला उपकरण समर्थन",
+                "amount_10000": "₹10,000 - कारीगरों के परिवार का समर्थन",
+                "custom_amount": "कस्टम राशि",
+                "enter_amount": "कस्टम राशि दर्ज करें (INR)",
+                "donation_message": "कारीगरों के लिए संदेश (वैकल्पिक)",
+                "newsletter_text": "अपडेट प्राप्त करें कि आपका दान कारीगरों की कैसे मदद कर रहा है",
+                "donate_button": "दान करें",
+                "secure_text": "आपका दान सुरक्षित है और 100% कारीगरों को जाता है"
+            },
+            mr: {
+                // Navigation
+                "site_title": "रूरलकनेक्ट",
+                "nav_home": "होम",
+                "nav_challenges": "डिलिव्हरी आव्हाने",
+                "nav_schemes": "सरकारी योजना",
+                "nav_survey": "सर्वेक्षण अंतर्दृष्टी",
+                "nav_solutions": "तंत्रज्ञान उपाय",
+                "nav_paithani": "पैठणी साडी",
+                "nav_support": "मदत मिळवा",
+                "nav_connect": "आमच्याशी जोडा",
+                
+                // Hero Section
+                "hero_title": "महाराष्ट्रातील ग्रामीण उद्योजकांना सक्षम करणे",
+                "hero_subtitle": "नावीन्यपूर्ण उपाय आणि समुदाय भागीदारीद्वारे कारागीर आणि लहान व्यवसायांसाठी लास्ट-माइल डिलिव्हरी अंतर भरून काढणे.",
+                "hero_button": "आमच्या उपक्रमात सामील व्हा",
+                
+                // Home Tab
+                "mission_title": "आमचे मिशन",
+                "card1_title": "कारागिरांना समर्थन",
+                "card1_text": "आम्ही पैठणी साडी विणकर आणि इतर ग्रामीण कारागीरांना संपूर्ण भारतात आणि त्यापलीकडे बाजारपेठांशी जोडतो, योग्य किंमत आणि वेळेवर डिलिव्हरी सुनिश्चित करतो.",
+                "card2_title": "लास्ट-माइल सोल्युशन्स",
+                "card2_text": "आमचे नावीन्यपूर्ण डिलिव्हरी मॉडेल महाराष्ट्रातील दुर्गम भागातील पायाभूत सुविधेच्या आव्हानांवर मात करतात, अगदी वेगळ्या गावांपर्यंत पोहोचतात.",
+                "card3_title": "डिजिटल सक्षमीकरण",
+                "card3_text": "आम्ही ग्रामीण उद्योजकांना ऑर्डर व्यवस्थापित करण्यात, शिपमेंट ट्रॅक करण्यात आणि त्यांचे व्यवसाय वाढवण्यात मदत करण्यासाठी वापरकर्ता-अनुकूल डिजिटल साधने आणि प्रशिक्षण प्रदान करतो.",
+                
+                // Challenges Tab
+                "challenges_title": "डिलिव्हरी आव्हाने",
+                "challenge1_title": "अपुरी रस्त्यांची पायाभूत सुविधा",
+                "challenge1_text": "महाराष्ट्रातील अनेक ग्रामीण भागात योग्य रस्त्यांचा अभाव आहे, विशेषत: पावसाळ्यात वाहन प्रवेश अवघड बनवतो.",
+                "challenge2_title": "मर्यादित डिजिटल कनेक्टिव्हिटी",
+                "challenge2_text": "दुर्गम गावांमध्ये इंटरनेट प्रवेश अविश्वसनीय आहे, ज्यामुळे ऑनलाइन ऑर्डर व्यवस्थापन आणि ट्रॅकिंग अडथळा येतो.",
+                "challenge3_title": "उच्च डिलिव्हरी खर्च",
+                "challenge3_text": "कमी ऑर्डर व्हॉल्यूम आणि लांब अंतर लहान व्यवसायांसाठी आर्थिकदृष्ट्या आव्हानात्मक डिलिव्हरी बनवते.",
+                "challenge4_title": "पॅकेजिंग आणि हाताळणी",
+                "challenge4_text": "पैठणी साड्या सारख्या नाजूक उत्पादनांना ट्रान्झिट दरम्यान विशेष पॅकेजिंग आणि काळजीपूर्वक हाताळणी आवश्यक असते.",
+                
+                // Schemes Tab
+                "schemes_title": "सरकारी योजना",
+                "scheme1_title": "पीएमजीएसवाय (प्रधानमंत्री ग्राम सडक योजना)",
+                "scheme1_text": "ग्रामीण रस्त्यांची कनेक्टिव्हिटी कार्यक्रम ज्याचा उद्देश ग्रामीण वस्त्यांना सर्व-हवामानात रस्त्याची प्रवेश देणे आहे.",
+                "scheme2_title": "एमएसएमई (सूक्ष्म, लघु आणि मध्यम उद्योग)",
+                "scheme2_text": "क्रेडिट सपोर्ट, तंत्रज्ञान उन्नती, विपणन सहाय्य आणि पायाभूत सुविधा विकास ऑफर करणार्या योजना.",
+                "scheme3_title": "स्टार्टअप इंडिया",
+                "scheme3_text": "सरलीकृत नियमन, निधी सहाय्य आणि उद्योग-शैक्षणिक भागीदारीद्वारे उद्योजकता प्रोत्साहन देण्यासाठीच्या उपक्रम.",
+                "scheme4_title": "मुद्रा योजना",
+                "scheme4_text": "गैर-कॉर्पोरेट, गैर-शेती लहान/सूक्ष्म उद्योगांना ₹10 लाख पर्यंत कर्ज प्रदान करते.",
+                "scheme5_title": "महिला उद्यम निधी",
+                "scheme5_text": "महिला उद्योजकांसाठी विशेष योजना जी आर्थिक सहाय्य आणि समर्थन ऑफर करते.",
+                "scheme6_title": "एसएफयूआरटीआई (पारंपारिक उद्योगांच्या पुनरुज्जीवनासाठी निधी योजना)",
+                "scheme6_text": "क्लस्टर विकास दृष्टिकोनाद्वारे पारंपारिक उद्योग आणि कारागिरांना समर्थन देते.",
+                "learn_more": "अधिक जाणून घ्या",
+                
+                // Survey Tab
+                "survey_title": "सर्वेक्षण अंतर्दृष्टी",
+                "survey1_title": "कारागीर आव्हाने",
+                "survey1_text": "85% पैठणी विणकरांनी त्यांच्या तात्काळ क्षेत्राबाहेर बाजारपेठांमध्ये प्रवेश करण्यास अडचणीचा अहवाल दिला.",
+                "survey2_title": "डिलिव्हरी वेळ",
+                "survey2_text": "महानगरीय भागात सरासरी डिलिव्हरी वेळ 7-10 दिवस आहे, तर शहरी व्यवसायांसाठी 2-3 दिवस आहे.",
+                "survey3_title": "डिजिटल साक्षरता",
+                "survey3_text": "केवळ 35% ग्रामीण उद्योजक व्यवसाय कार्यासाठी डिजिटल प्लॅटफॉर्म वापरण्यासाठी आत्मविश्वास वाटतो.",
+                
+                // Solutions Tab
+                "solutions_title": "तंत्रज्ञान-आधारित उपाय",
+                "solution1_title": "मोबाइल-फर्स्ट प्लॅटफॉर्म",
+                "solution1_text": "कमी डिजिटल साक्षरता वापरकर्त्यांसाठी डिझाइन केलेले ऑर्डर व्यवस्थापन, पेमेंट प्रोसेसिंग आणि डिलिव्हरी ट्रॅकिंगसाठी साधे, स्थानिक अॅप.",
+                "solution2_title": "स्मार्ट मार्ग ऑप्टिमायझेशन",
+                "solution2_text": "कृत्रिम बुद्धिमत्ता-चालित लॉजिस्टिक्स प्लॅटफॉर्म जो रस्त्याच्या परिस्थिती आणि हंगामी बदलांचा विचार करून कार्यक्षम डिलिव्हरी मार्गांची योजना करतो.",
+                "solution3_title": "समुदाय डिलिव्हरी हब",
+                "solution3_text": "मध्यवर्ती गावांमध्ये संकलन केंद्रे स्थापन करणे जेथे किफायतशीर डिलिव्हरीसाठी एकाधिक ऑर्डर समेकित केले जाऊ शकतात.",
+                "solution4_title": "संकरित डिलिव्हरी मॉडेल",
+                "solution4_text": "दूरदराज के ठिकाणी अंतिम मैलासाठी पारंपारिक वाहतूक स्थानिक मोटारसायकल डिलिव्हरीसह एकत्र करणे.",
+                
+                // Paithani Tab
+                "paithani_title": "पैठणी साडी वारसा",
+                "paithani_subtitle": "पैठणी विणकाम कला",
+                "paithani_text1": "पैठणी साड्या महाराष्ट्रातील पैठण येथून उत्पन्न झालेल्या रेशमी साड्यांचे एक पारंपारिक रूप आहे. त्यांच्या गुंतागुंतीच्या जरी काम आणि तेजस्वी रंगांसाठी ओळखल्या जाणार्या, प्रत्येक साडीला डिझाइनच्या गुंतागुंतीवर अवलंबून पूर्ण होण्यासाठी 2-6 महिने लागतात.",
+                "paithani_stories": "कारागीर कथा",
+                "paithani_text2": "मास्टर विणकरांना भेटा ज्यांनी पिढ्यानंतर हे प्राचीन कारागीर कौशल्य जतन केले आहे, आता जागतिक बाजारपेठांपर्यंत पोहोचण्यासाठी आव्हानांचा सामना करत आहेत.",
+                "paithani_delivery": "डिलिव्हरी समर्थन",
+                "paithani_text3": "आम्ही या मौल्यवान हस्तनिर्मित खजिन्यांसाठी विशेष पॅकेजिंग आणि विमाकृत डिलिव्हरी प्रदान करतो, हे सुनिश्चित करतो की ते ग्राहकांना परिपूर्ण स्थितीत पोहोचतात.",
+                "paithani_button": "कारागिरांना समर्थन द्या",
+                "donation_help": "तुमचे दान हे पारंपारिक कला प्रकार जतन करण्यास मदत करते आणि कारागिरांच्या उपजीविकेस समर्थन देत",
+                
+                // Support Tab
+                "support_title": "मदत मिळवा",
+                "support_subtitle": "विद्यार्थी स्वयंसेवक हेल्पडेस्क",
+                "support_text": "विद्यार्थी स्वयंसेवकांची आमची टीम डिजिटल ऑनबोर्डिंग, ऑर्डर व्यवस्थापन आणि डिलिव्हरी समन्वयासाठी तुमची मदत करण्यासाठी तयार आहे.",
+                "form_name": "तुमचे नाव",
+                "form_phone": "फोन नंबर",
+                "form_help": "आम्ही तुमची मदत कशी करू शकतो?",
+                "form_select": "एक पर्याय निवडा",
+                "option_digital": "डिजिटल प्लॅटफॉर्म ऑनबोर्डिंग",
+                "option_order": "ऑर्डर व्यवस्थापन सहाय्य",
+                "option_delivery": "डिलिव्हरी संबंधित समस्या",
+                "option_payment": "पेमेंट प्रोसेसिंग मदत",
+                "option_other": "इतर मदत",
+                "form_details": "तपशील (ऐच्छिक)",
+                "form_request": "मदत विनंती करा",
+                
+                // Connect Tab
+                "connect_title": "आमच्याशी जोडा",
+                "connect_subtitle": "आमच्या उपक्रमात सामील व्हा",
+                "connect_text": "आमच्या ग्रामीण उद्योजकता नेटवर्कचा भाग बनण्यासाठी आणि लास्ट-माइल डिलिव्हरी सोल्युशन्समध्ये प्रवेश करण्यासाठी हा फॉर्म भरा.",
+                "form_email": "ईमेल पत्ता",
+                "form_business": "व्यवसाय प्रकार",
+                "option_paithani": "पैठणी साडी विणकाम",
+                "option_handicrafts": "इतर हस्तकला",
+                "option_agriculture": "कृषी उत्पादने",
+                "option_textiles": "टेक्सटाइल",
+                "form_income": "वार्षिक व्यवसाय उत्पन्न (INR)",
+                "option_income1": "1 लाख पर्यंत",
+                "option_income2": "1-5 लाख",
+                "option_income3": "5-10 लाख",
+                "option_income4": "10 लाख पेक्षा जास्त",
+                "form_delivery": "पसंतीची डिलिव्हरी पद्धत",
+                "option_pickup": "समुदाय पिकअप पॉइंट",
+                "option_home": "थेट होम डिलिव्हरी",
+                "option_mixed": "मिश्र (स्थानावर आधारित)",
+                "form_submit": "अर्ज सबमिट करा",
+                
+                // Footer
+                "footer_title": "रूरलकनेक्ट",
+                "footer_text": "नावीन्यपूर्ण लास्ट-माइल डिलिव्हरी सोल्युशन्सद्वारे महाराष्ट्रातील ग्रामीण उद्योजकांना सक्षम करणे.",
+                "footer_links": "द्रुत दुवे",
+                "footer_contact": "आमच्याशी संपर्क साधा",
+                "footer_location": "महाराष्ट्र, भारत",
+                "footer_copyright": "© 2023 रूरलकनेक्ट. सर्व हक्क राखीव. | एक विद्यार्थी-नेतृत्वातील उपक्रम",
+
+                // Donation Modal
+                "donation_title": "पैठणी कारागिरांना समर्थन द्या",
+                "donation_text": "तुमचे दान हे पारंपारिक कला प्रकार जतन करण्यास मदत करते आणि कारागिरांच्या उपजीविकेस समर्थन देत. 100% दान थेट कारागिरांकडे जाते.",
+                "donor_name": "पूर्ण नाव",
+                "donor_email": "ईमेल पत्ता",
+                "donor_phone": "फोन नंबर",
+                "donation_amount": "दान रक्कम (INR)",
+                "amount_500": "₹500 - एका कारागिराला एका आठवड्यासाठी समर्थन",
+                "amount_1000": "₹1,000 - एका साडीसाठी कच्चा माल समर्थन",
+                "amount_2500": "₹2,500 - एका कारागिराला एका महिन्यासाठी समर्थन",
+                "amount_5000": "₹5,000 - कार्यशाळेचे उपकरण समर्थन",
+                "amount_10000": "₹10,000 - कारागिरांच्या कुटुंबास समर्थन",
+                "custom_amount": "सानुकूल रक्कम",
+                "enter_amount": "सानुकूल रक्कम प्रविष्ट करा (INR)",
+                "donation_message": "कारागिरांसाठी संदेश (ऐच्छिक)",
+                "newsletter_text": "तुमचे दान कारागिरांना कसे मदत करत आहे याबद्दल अद्यतने प्राप्त करा",
+                "donate_button": "दान करा",
+                "secure_text": "तुमचे दान सुरक्षित आहे आणि 100% कारागिरांकडे जाते"
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update active language button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.language-btn[data-lang="${lang}"]`).classList.add('active');
+        }
+
+        // Donation Modal Functions
+        function openDonationModal() {
+            document.getElementById('donation-modal').style.display = 'flex';
+            updateDonationModalContent();
+        }
+
+        function closeDonationModal() {
+            document.getElementById('donation-modal').style.display = 'none';
+        }
+
+        function updateDonationModalContent() {
+            // This function updates modal content when language changes
+            // The main translation function already handles this through data-translate attributes
+        }
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Navigation Tab Switching
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all nav links
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to clicked nav link
+                this.classList.add('active');
+                
+                // Hide all tab content
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                const targetId = this.getAttribute('href').substring(1) + '-tab';
+                document.getElementById(targetId).classList.add('active');
+                
+                // Close mobile menu after selection
+                if (window.innerWidth <= 576) {
+                    document.querySelector('nav').classList.remove('active');
+                }
+            });
+        });
+        
+        // Language Switching
+        document.querySelectorAll('.language-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        // Donation amount selection
+        document.getElementById('donation-amount').addEventListener('change', function() {
+            const customAmountGroup = document.getElementById('custom-amount-group');
+            if (this.value === 'custom') {
+                customAmountGroup.style.display = 'block';
+            } else {
+                customAmountGroup.style.display = 'none';
+            }
+        });
+        
+        // Donation Form Submission
+        document.getElementById('donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('donor-name').value,
+                email: document.getElementById('donor-email').value,
+                phone: document.getElementById('donor-phone').value,
+                amount: document.getElementById('donation-amount').value === 'custom' ? 
+                       document.getElementById('custom-amount').value : 
+                       document.getElementById('donation-amount').value,
+                message: document.getElementById('donation-message-text').value,
+                newsletter: document.getElementById('newsletter').checked,
+                language: currentLang,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            const messageDiv = document.getElementById('donation-message');
+            const loadingMsg = currentLang === 'en' ? 'Processing your donation...' : 
+                             currentLang === 'hi' ? 'आपका दान प्रसंस्करण...' : 
+                             'तुमचे दान प्रक्रिया करत आहे...';
+            messageDiv.innerHTML = '<div class="message">' + loadingMsg + '</div>';
+            
+            // Send to FormSubmit
+            const form = document.getElementById('donation-form');
+            form.action = 'https://formsubmit.co/dubeyjiya2005@gmail.com';
+            form.method = 'POST';
+            
+            // Add hidden fields
+            const hiddenFields = [
+                { name: '_subject', value: 'New Donation - Paithani Artisans' },
+                { name: '_template', value: 'table' },
+                { name: '_captcha', value: 'false' }
+            ];
+            
+            hiddenFields.forEach(field => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = field.name;
+                hiddenInput.value = field.value;
+                form.appendChild(hiddenInput);
+            });
+            
+            // Submit the form
+            form.submit();
+            
+            const successMsg = currentLang === 'en' ? 
+                'Thank you for your generous donation! You will receive a confirmation email shortly.' :
+                currentLang === 'hi' ?
+                'आपके उदार दान के लिए धन्यवाद! आपको शीघ्र ही एक पुष्टिकरण ईमेल प्राप्त होगा।' :
+                'तुमच्या उदार दानाबद्दल धन्यवाद! तुम्हाला लवकरच एक पुष्टीकरण ईमेल प्राप्त होईल.';
+                
+            messageDiv.innerHTML = '<div class="message success">' + successMsg + '</div>';
+            setTimeout(() => {
+                closeDonationModal();
+                document.getElementById('donation-form').reset();
+                document.getElementById('custom-amount-group').style.display = 'none';
+            }, 3000);
+        });
+        
+        // Form Submission with Email
+        document.getElementById('connect-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('connect-name').value,
+                phone: document.getElementById('connect-phone').value,
+                email: document.getElementById('connect-email').value,
+                businessType: document.getElementById('business-type').value,
+                income: document.getElementById('income').value,
+                deliveryMethod: document.getElementById('delivery-method').value,
+                language: currentLang,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // Show loading message
+            const messageDiv = document.getElementById('connect-message');
+            const loadingMsg = currentLang === 'en' ? 'Submitting your application...' :
+                              currentLang === 'hi' ? 'आपका आवेदन जमा किया जा रहा है...' :
+                              'तुमचा अर्ज सबमिट केला जात आहे...';
+            messageDiv.innerHTML = '<div class="message">' + loadingMsg + '</div>';
+            
+            // Send to FormSubmit
+            const form = document.getElementById('connect-form');
+            form.action = 'https://formsubmit.co/dubeyjiya2005@gmail.com';
+            form.method = 'POST';
+            
+            // Add hidden fields for FormSubmit
+            const hiddenFields = [
+                { name: '_subject', value: 'New RuralConnect Application' },
+                { name: '_template', value: 'table' },
+                { name: '_captcha', value: 'false' }
+            ];
+            
+            hiddenFields.forEach(field => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = field.name;
+                hiddenInput.value = field.value;
+                form.appendChild(hiddenInput);
+            });
+            
+            // Submit the form
+            form.submit();
+            
+            const successMsg = currentLang === 'en' ?
+                'Thank you! Your application has been submitted. You will receive a confirmation email shortly.' :
+                currentLang === 'hi' ?
+                'धन्यवाद! आपका आवेदन जमा कर दिया गया है। आपको शीघ्र ही एक पुष्टिकरण ईमेल प्राप्त होगा।' :
+                'धन्यवाद! तुमचा अर्ज सबमिट झाला आहे. तुम्हाला लवकरच एक पुष्टीकरण ईमेल प्राप्त होईल.';
+                
+            messageDiv.innerHTML = '<div class="message success">' + successMsg + '</div>';
+            setTimeout(() => {
+                document.getElementById('connect-form').reset();
+            }, 3000);
+        });
+        
+        // Support Form Submission
+        document.getElementById('support-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('contact').value,
+                issue: document.getElementById('issue').value,
+                message: document.getElementById('message').value,
+                language: currentLang,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            const messageDiv = document.getElementById('support-message');
+            const loadingMsg = currentLang === 'en' ? 'Submitting your request...' :
+                              currentLang === 'hi' ? 'आपका अनुरोध जमा किया जा रहा है...' :
+                              'तुमची विनंती सबमिट केली जात आहे...';
+            messageDiv.innerHTML = '<div class="message">' + loadingMsg + '</div>';
+            
+            // Send to FormSubmit
+            const form = document.getElementById('support-form');
+            form.action = 'https://formsubmit.co/dubeyjiya2005@gmail.com';
+            form.method = 'POST';
+            
+            // Add hidden fields
+            const hiddenFields = [
+                { name: '_subject', value: 'Support Request - RuralConnect' },
+                { name: '_template', value: 'table' },
+                { name: '_captcha', value: 'false' }
+            ];
+            
+            hiddenFields.forEach(field => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = field.name;
+                hiddenInput.value = field.value;
+                form.appendChild(hiddenInput);
+            });
+            
+            // Submit the form
+            form.submit();
+            
+            const successMsg = currentLang === 'en' ?
+                'Your support request has been submitted. Our student volunteers will contact you shortly.' :
+                currentLang === 'hi' ?
+                'आपका सहायता अनुरोध जमा कर दिया गया है। हमारे छात्र स्वयंसेवक शीघ्र ही आपसे संपर्क करेंगे।' :
+                'तुमची समर्थन विनंती सबमिट झाली आहे. आमचे विद्यार्थी स्वयंसेवक लवकरच तुमच्याशी संपर्क साधतील.';
+                
+            messageDiv.innerHTML = '<div class="message success">' + successMsg + '</div>';
+            setTimeout(() => {
+                document.getElementById('support-form').reset();
+            }, 3000);
+        });
+
+        // Initialize with English language
+        changeLanguage('en');
+    </script>
+</body>
+</html>
